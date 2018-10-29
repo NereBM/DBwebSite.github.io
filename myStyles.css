@@ -1,0 +1,90 @@
+
+
+html,body{
+background-image: url('https://pre00.deviantart.net/5f45/th/pre/i/2014/136/2/3/jubilee_campus__nottingham_university_by_three_wheels-d7ijq2o.jpg');
+background-size: cover; 
+/* cover - Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges */
+/* contain - Resize the background image to make sure the image is fully visible */
+background-repeat: no-repeat;
+height: 100%;
+
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 250px;
+margin-top: auto;
+margin-bottom: auto;
+width: 370px;
+background-color: rgba(0,0,0,0.5) /*rgba(0,0,0,0.5) El 0.5 le da la transparencia*/
+}
+
+
+.card-header h3{
+color: white;
+}
+
+
+
+.input-group-append span{
+width: 50px;
+background-color: rgba(6, 116, 219, 0.815);
+color: white;
+border:0 !important;
+}
+
+.foot{
+    background-color: rgba(0,0,0,0.85);
+    }
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: white;
+background-color: rgba(6, 116, 219, 0.815);
+width: 100px;
+}
+
+.login_btn:hover{
+    color: black;
+    background-color: white;
+    }
+
+.show_btn{
+    color: white;
+    background-color: rgba(6, 116, 219, 0.815);
+    width: 100px;
+    }
+
+
+
+
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}

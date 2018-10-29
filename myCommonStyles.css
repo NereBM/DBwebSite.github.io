@@ -1,0 +1,24 @@
+
+html,body{
+background-image: url(https://img.freepik.com/free-photo/smooth-dark-blue-with-black-vignette-studio-well-use-as-background-business-report-digital-website-template_1258-748.jpg);
+
+background-size: cover; 
+/* cover - Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges */
+/* contain - Resize the background image to make sure the image is fully visible */
+background-repeat: no-repeat;
+height: 100%;
+width: 100%;
+font-family: 'Numans', sans-serif;
+
+}
+
+.bg-faded{
+    width: 80%;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+.nav-item a{
+
+    font-weight: bold;
+}
