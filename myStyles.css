@@ -24,7 +24,14 @@ width: 370px;
 background-color: rgba(0,0,0,0.5) /*rgba(0,0,0,0.5) El 0.5 le da la transparencia*/
 }
 
-
+.card2 {
+    height: 250px;
+    margin-top: auto;
+    margin-left: 50px;
+    margin-bottom: auto;
+    width: 370px;
+    background-color: rgba(0,0,0,0.5) /*rgba(0,0,0,0.5) El 0.5 le da la transparencia*/
+}
 .card-header h3{
 color: white;
 }
@@ -64,6 +71,7 @@ margin-right: 5px;
 color: white;
 background-color: rgba(6, 116, 219, 0.815);
 width: 100px;
+
 }
 
 .login_btn:hover{
@@ -88,3 +96,4 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+

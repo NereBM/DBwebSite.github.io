@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta charset="utf-8" />
+ <link href="http://www.cs.nott.ac.uk/~pszpxb/gumby.css" rel="stylesheet"
+ type="text/css" />
+ <style>
+     table, th, td {
+         border-style: ridge;
+         width: 80%;
+     }
+
+ table.MsoTableGrid {
+ border: solid windowtext 1.0pt;
+ font-size: 11.0pt;
+ font-family: "Calibri",sans-serif;
+ }
+ p.MsoNormal {
+ margin-top: 0cm;
+ margin-right: 0cm;
+ align-self:center;
+ margin-bottom: 8.0pt;
+ margin-left: 0cm;
+ line-height: 107%;
+ font-size: 11.0pt;
+ font-family: "Calibri",sans-serif;
+ }
+ .auto-style1 {
+ width: 406px;
+ }
+     body {
+         background-image: linear-gradient(to right, #ffffff, #99ccff);
+     }
+
+ </style>
+ <title>Student Information</title>
+</head>
+<body>
+<table align="center">
+ <thead>Header Row for outer table</thead>
+ <tr>
+ <td>
+ <form action="Display.php" method="post">
+ <table>
+ <tr>
+ <th colspan="4">First Row of Inner Table</th>
+ </tr>
+<tr>
+ <th>Name</th>
+ <th>ID</th>
+ <th>Course ID</th>
+ <th>Course Title</th>
+ </tr>
+<tr>
+ <td><p>Dummy</p></td>
+ <td>0001</td>
+ <td>0001</td>
+ <td>Dummy Course</td>
+ </tr>
+<tr>
+ <td><textarea name="name1">Enter Here</textarea></td>
+ <td><input name="number1id" type="number" /></td>
+ <td><input type="number" name="courseid" /></td>
+ <td><textarea name="coursename">Type your coursename
+here</textarea></td>
+ </tr>
+<tr>
+ <td colspan="4"><input type="submit" value="Save Data" /></td>
+ </tr>
+ </table>
+ </form>
+ </td>
+ </tr>
+</table>
+</body>
+</html>
+The main points:
+The page uses two tables – one inside the other.
+<table>
+<tr>
+<td>
+<p>This is a table with one column and one row</p>
+</td>
+</tr>
+</table>
+<form action="Display.php" method="post">
+</form>
