@@ -45,9 +45,8 @@ font-family: 'Numans', sans-serif;
 }
 
 
-
-.table-bordered tr{
-    background-color: white
+.table-bordered tr {
+    background-color: white !important;
 }
 
 .table-bordered td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-top-width:1px;border-bottom-width:1px;border-color:#999;color:#444;background-color:#F7FDFA;}

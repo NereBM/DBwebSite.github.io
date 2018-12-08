@@ -1,0 +1,118 @@
+CREATE TABLE users (
+	user_id int(10) not null AUTO_INCREMENT PRIMARY KEY,
+	first_name varchar(255) not null,
+	last_name varchar(255) not null,
+	user_name varchar(255) not null,
+	user_pwd varchar(255) not null
+);
+
+INSERT INTO student(studentID, first_name, last_name, birth_date, course_year) VALUES(4336237,'Nerea','Bejar','1992-10-08','First');
+INSERT INTO student(studentID, first_name, last_name, birth_date, course_year) VALUES(4334532,'Sonia','Munoz','1995-04-17','Third');
+INSERT INTO student(studentID, first_name, last_name, birth_date, course_year) VALUES(4332233,'Luna','Bango','1992-01-01','Second');
+INSERT INTO student(studentID, first_name, last_name, birth_date, course_year) VALUES(4325368,'Jorge','Barrientos','1992-05-18','Second');
+
+CREATE TABLE student (
+	studentID int(10) not null,
+	first_name varchar(255) not null,
+	last_name varchar(255) not null,
+	birth_date date not null,
+	course_year varchar(50) not null,
+	primary key (studentID)
+);
+
+CREATE TABLE department (
+	departmentID int(10) not null,
+	name varchar(255) not null,
+	primary key (departmentID)
+);
+
+INSERT INTO department(departmentID, name) VALUES(3456,'Computer Science');
+INSERT INTO department(departmentID, name) VALUES(3555,'Advanced Manufacturing');
+INSERT INTO department(departmentID, name) VALUES(3236,'Mechanical Engineering');
+INSERT INTO department(departmentID, name) VALUES(2155,'Medicine');
+INSERT INTO department(departmentID, name) VALUES(2158,'Pharmacy');
+
+CREATE TABLE classroom (
+	classroomID varchar(255) not null,
+	building varchar(255) not null,
+	primary key (classroomID)
+
+);
+
+INSERT INTO classroom(classroomID, building) VALUES('A25','CS-Building');
+INSERT INTO classroom(classroomID, building) VALUES('A35','CS-Building');
+INSERT INTO classroom(classroomID, building) VALUES('A16','CS-Building');
+INSERT INTO classroom(classroomID, building) VALUES('A10','CS-Building');
+INSERT INTO classroom(classroomID, building) VALUES('D12','Dearing Building');
+INSERT INTO classroom(classroomID, building) VALUES('D19','Dearing Building');
+INSERT INTO classroom(classroomID, building) VALUES('D25','Dearing Building');
+INSERT INTO classroom(classroomID, building) VALUES('D42','Dearing Building');
+INSERT INTO classroom(classroomID, building) VALUES('P08','Portland Building');
+INSERT INTO classroom(classroomID, building) VALUES('P23','Portland Building');
+INSERT INTO classroom(classroomID, building) VALUES('P03','Portland Building');
+
+CREATE TABLE module (
+	moduleID varchar(10) not null,
+	title varchar(255) not null,
+	classroomID varchar(255) not null,
+	departmentID int(10) not null,
+	credits int(10) not null,
+	term varchar(255) not null,
+	timetable varchar(255) not null,
+	primary key (moduleID),
+	foreign key (classroomID) references classroom(classroomID),
+	foreign key (departmentID) references department(departmentID)
+);
+
+INSERT INTO module(moduleID, title, classroomID, departmentID, credits, term, timetable) VALUES('G53MLE','Machine Learning', 'A25', 3456, 20, 'Autumn','Monday 12pm-13pm');
+INSERT INTO module(moduleID, title, classroomID, departmentID, credits, term, timetable) VALUES('G54DIS','Databases, Interfaces and Software Design Principles', 'A35', 3456, 20, 'Autumn','Tuesday 10pm-13pm');
+INSERT INTO module(moduleID, title, classroomID, departmentID, credits, term, timetable) VALUES('G54PRG','Programming', 'D19', 3456, 20, 'Autumn','Friday 12pm-13pm');
+INSERT INTO module(moduleID, title, classroomID, departmentID, credits, term, timetable) VALUES('G54REM','Research Methods', 'P23', 3456, 20, 'Spring' ,'Thursday 15pm-18pm');
+INSERT INTO module(moduleID, title, classroomID, departmentID, credits, term, timetable) VALUES('G54REM','Molecular Physics', 'P08', 2158, 20, 'Autumn','Monday 9pm-13pm');
+INSERT INTO module(moduleID, title, classroomID, departmentID, credits, term, timetable) VALUES('H45ORC','Organic Chemistry', 'P03', 2158, 20, 'Autumn','Wednesday 9pm-13pm');
+
+
+
+CREATE TABLE lecturer (
+	lecturerID int(10) not null,
+	first_name varchar(255) not null,
+	last_name varchar(255) not null,
+	departmentID int(10) not null,
+	email varchar(255) not null,
+	office varchar(255) not null,
+	primary key (lecturerID),
+	constraint FK_deplec foreign key (departmentID)
+	references department(departmentID)
+
+);
+
+INSERT INTO lecturer(lecturerID, first_name, last_name, departmentID, email, office) VALUES(2536,'Michel', 'Valstar', 3456, 'michel.valstar@nottingham.ac.uk', 'B79');
+INSERT INTO lecturer(lecturerID, first_name, last_name, departmentID, email, office) VALUES(2533,'Isaac', 'Triguero', 3456, 'isaac.triguero@nottingham.ac.uk', 'C82');
+INSERT INTO lecturer(lecturerID, first_name, last_name, departmentID, email, office) VALUES(2583,'Thorsten', 'Altenkirch', 3456, 'thorsten.altenkirch@nottingham.ac.uk', 'A10')
+INSERT INTO lecturer(lecturerID, first_name, last_name, departmentID, email, office) VALUES(2593,'Peter', 'Blanchfield', 3456, 'peter.blanchfield@nottingham.ac.uk', 'A26');
+INSERT INTO lecturer(lecturerID, first_name, last_name, departmentID, email, office) VALUES(1522,'Sofia', 'Bush', 2158, 'sofia.bush@nottingham.ac.uk', 'D53');
+INSERT INTO lecturer(lecturerID, first_name, last_name, departmentID, email, office) VALUES(1525,'Elisabeth', 'Swan', 2158, 'elisabeth.swan@nottingham.ac.uk', 'D12');
+INSERT INTO lecturer(lecturerID, first_name, last_name, departmentID, email, office) VALUES(1588,'William', 'Turner', 2158, 'william.turner@nottingham.ac.uk', 'D15');
+INSERT INTO lecturer(lecturerID, first_name, last_name, departmentID, email, office) VALUES(1528,'Jake', 'Peralta', 3555, 'jake.peralta@nottingham.ac.uk', 'D19');
+
+
+
+CREATE TABLE EnroleIn (
+	studentID int(10) not null,
+	moduleID varchar(10) not null,
+	foreign key (studentID) references student(studentID),
+	foreign key (moduleID) references module(moduleID),
+	constraint FK_enroles primary key(studentID,moduleID)
+);
+
+INSERT INTO EnroleIn(studentID, moduleID)
+
+
+CREATE TABLE TaughtBy (
+	lecturerID int(10) not null,
+	moduleID varchar(10) not null,
+	foreign key (lecturerID) references lecturer(lecturerID),
+	foreign key (moduleID) references module(moduleID),
+	constraint FK_taught primary key(moduleID,lecturerID)
+);
+

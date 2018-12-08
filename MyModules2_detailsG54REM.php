@@ -31,7 +31,7 @@
         exit;
     }
 
-	$studentid = 4336237;
+	$moduleid = "G54REM";
 	?>
 	 
 
@@ -72,44 +72,72 @@
 		</div>
 	</nav>
 	<div class="second_body">
-		<h3> My Modules </h3>
-		<div style="overflow-x:auto;">
-			<table class="table table-bordered" style=" margin-top: 1%; background-color: white">
-				<!--In some cases I had to add the styles inline instead that on the css styles sheet because otherwise they only worked for some browsers-->
-				<thead>
-					<tr style=" color:#fff; background-color:rgb(24, 96, 124)">
-						<th scope="col">Code</th>
-						<th scope="col">Title</th>
-						<th scope="col">Credits</th>
-						<th scope="col">Term</th>
-						<th scope="col">More information</th>
-					</tr>
-				</thead>
-				<tbody>
-				
+
 					<?php
-						$sql="SELECT module.moduleID, title, credits, term 
-						FROM student,EnroleIn,module 
-						WHERE student.studentID = EnroleIn.studentID 
-						AND module.moduleID = EnroleIn.moduleID 
-						AND student.studentID = ".$studentid;
+						$sql="SELECT module.title, first_name, last_name, office, email, module.classroomID, building, timetable 
+						FROM module, classroom, lecturer, TaughtBy 
+						WHERE module.moduleID = TaughtBy.moduleID 
+						AND module.classroomID = classroom.classroomID
+						AND lecturer.lecturerID = TaughtBy.LecturerID
+						AND module.moduleID ='".$moduleid."'";
+						
 						$result = $conn->query($sql);
 
 						if($result->num_rows>0){
-							while($row=$result->fetch_assoc()){
-							echo '<tr>';
-								echo '<td>'.$row['moduleID'].'</td>';
-								echo '<td>'.$row['title'].'</td>';
-								echo '<td>'.$row['credits'].'</td>';
-								echo '<td>'.$row['term'].'</td>';
-								echo ' <td> <a href="MyModules2_details'.$row['moduleID'].'.php">See details</a></td>';
-							echo '</tr>';
+							$row=$result->fetch_assoc();
+
+							echo '<h3> My Modules > '.$row['title'].' </h3>';
+							echo '<div style="overflow-x:auto;">';
+
+								echo '<table class="table table-bordered" style=" margin-top: 1%; background-color: white">';
+
+								echo '<tbody>';
+
+									echo '<thead>';
+										echo '<tr style=" color:#fff; background-color:rgb(24, 96, 124)">';
+											echo '<th colspan="3" style="text-align: center">'.$moduleid." - ".$row['title'].'</th>';
+										echo '</tr>';
+									echo '</thead>';
+
+									echo '<tbody>';
+
+										echo '<tr>';
+											echo '<th rowspan="3" style=" color:#fff; background-color:rgb(24, 96, 124); text-align: center; vertical-align: middle"> Lecturer </td>';
+												echo '<td> Name </td>';
+												echo '<td>'.$row['first_name']." ".$row['last_name'].'</td>';
+										echo '</tr>';
+										echo '<tr>';
+												echo '<td> Email </td>';
+												echo '<td>'.$row['email'].'</td>';
+										echo '</tr>';
+										echo '<tr>';
+												echo '<td> Office </td>';
+												echo '<td>'.$row['office'].'</td>';
+										echo '</tr>';
+
+
+										echo '<tr>';
+											echo '<th rowspan="2" style=" color:#fff; background-color:rgb(24, 96, 124); text-align: center; vertical-align: middle"> Location </td>';
+												echo '<td> Classroom </td>';
+												echo '<td>'.$row['classroomID'].'</td>';
+										echo '</tr>';
+										echo '<tr>';
+												echo '<td> Building </td>';
+												echo '<td>'.$row['building'].'</td>';
+										echo '</tr>';
+
+										echo '<tr>';
+											echo '<th style=" color:#fff; background-color:rgb(24, 96, 124); text-align: center; vertical-align: middle"> Timetable </td>';
+												echo '<td colspan="2">'.$row['timetable'].'</td>';
+										echo '</tr>';
+
+
+									echo '</tbody>';
 
 							}
-	
-						}
 					?>
-				</tbody>
+
+				
 			</table>
 	
 		</div>

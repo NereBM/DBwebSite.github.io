@@ -1,0 +1,17 @@
+SELECT module.moduleID, title, credits, term
+FROM student,EnroleIn,module 
+WHERE student.studentID = EnroleIn.studentID
+AND module.moduleID = EnroleIn.moduleID
+AND student.studentID=4336237;
+
+SELECT module.title, first_name, last_name, office, email, module.classroomID, building
+FROM module, classroom, lecturer, TaughtBy
+WHERE module.moduleID = TaughtBy.moduleID
+AND module.classroomID = classroom.classroomID
+AND lecturer.lecturerID = TaughtBy.LecturerID
+AND module.moduleID ='G53MLE';
+
+SELECT title, building
+FROM module, classroom
+WHERE module.moduleID ='G53MLE'
+AND module.classroomID = classroom.classroomID;
