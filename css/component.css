@@ -8,7 +8,10 @@
 
 .grid li {
 	display: inline-block;
-	width: 440px;
+	/*SONIA: No entiendo ese width, hace que las imágenes queden más a la izquierda.
+	Si tienes puesto ese tamaño por algo, yo metería un margin: auto a la imagen para que se quede centrada y reajustaría
+	los recuadros del hover*/
+	/*margin: 0;*/
 	margin: 0;
 	padding: 20px;
 	text-align: left;
@@ -68,7 +71,11 @@
 
 /* Caption Style 1 */
 .cs-style-1 figcaption {
-	height: 100%;
+	/*height: 100%;*/
+	/*SONIA*/
+	min-height: 100%;
+	z-index: 20;
+	/**/
 	width: 100%;
 	opacity: 0;
 	text-align: center;
