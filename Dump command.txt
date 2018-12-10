@@ -1,0 +1,1 @@
+mysqldump -u psxnb3 -p psxnb3 > psxnb3SQLDump.sql
